@@ -23,7 +23,7 @@ function ErrorBoundary({
         <html>
             <body>
                 <Container sx={{
-                    bgcolor: 'secondary.main',
+                    bgcolor: '#f44336',
                     height: '100vh',
                     display: "flex",
                     alignItems: "center",
@@ -35,7 +35,7 @@ function ErrorBoundary({
                             flexDirection: "column",
                             alignItems: "center"
                         }}>
-                        <ErrorOutlineIcon sx={{ fontSize: "120px", color: "secondary.dark" }} />
+                        <ErrorOutlineIcon sx={{ fontSize: "120px", color: "#ba000d" }} />
                         <Typography
                             mt={1} variant="h6" maxWidth={"sm"}
                             sx={{ textAlign: "center", color: "primary.contrastText" }}>
