@@ -1,7 +1,9 @@
 'use client'
 
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, ThemeProvider, Typography } from "@mui/material";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import theme from "@/theme";
 
 function ErrorBoundary({
     error
@@ -22,32 +24,25 @@ function ErrorBoundary({
     return (
         <html>
             <body>
-                <Container sx={{
-                    bgcolor: '#f44336',
-                    height: '100vh',
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    "*": {
-                        boxSizing: "border-box",
-                        margin: "0px",
-                        padding: "0px",
-                    }
-                }} maxWidth={false}>
-                    <Box
-                        sx={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center"
-                        }}>
-                        <ErrorOutlineIcon sx={{ fontSize: "120px", color: "#ba000d" }} />
-                        <Typography
-                            mt={1} variant="h6" maxWidth={"sm"}
-                            sx={{ textAlign: "center", color: "primary.contrastText" }}>
-                            {errorMessage}
-                        </Typography>
-                    </Box>
-                </Container >
+                <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+                    <ThemeProvider theme={theme}>
+                        <Container sx={{ bgcolor: '#f44336' }} maxWidth={false}>
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center"
+                                }}>
+                                <ErrorOutlineIcon sx={{ fontSize: "120px", color: "#ba000d" }} />
+                                <Typography
+                                    mt={1} variant="h6" maxWidth={"sm"}
+                                    sx={{ textAlign: "center", color: "primary.contrastText" }}>
+                                    {errorMessage}
+                                </Typography>
+                            </Box>
+                        </Container >
+                    </ThemeProvider>
+                </AppRouterCacheProvider>
             </body>
         </html >
     )
