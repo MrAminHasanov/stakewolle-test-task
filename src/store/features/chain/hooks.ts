@@ -2,7 +2,7 @@ import { chainInfo } from '@/constants/chainsConst';
 import { useAppDispatch } from "@/hooks/reduxHooks";
 import { useCallback } from "react";
 
-import { actions } from "./stateSlice.slice";
+import { actions } from "./stateSlice";
 import { addChainThunk, getActiveChainIdThunk, switchChainThunk } from './thunks';
 
 export const useChainActions = () => {

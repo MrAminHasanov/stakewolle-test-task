@@ -10,7 +10,7 @@ const initialState: initialStateType = {
     accauntId: ""
 };
 
-export const accauntSlice = createSlice({
+const accauntSlice = createSlice({
     name: "accauntSlice",
     initialState,
     reducers: {
@@ -49,4 +49,4 @@ export const accauntSlice = createSlice({
     }
 })
 
-export const { actions } = accauntSlice; 
+export const { actions, reducer, name } = accauntSlice; 

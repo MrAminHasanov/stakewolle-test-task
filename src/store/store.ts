@@ -1,12 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { accauntSlice } from './features/account/stateSlice.slice';
-import { chainSlice } from './features/chain/stateSlice.slice';
-import { balanceSlice } from './features/balance';
+import { name as accountSlice, reducer as accountReducer } from './features/account/stateSlice';
+import { name as chainSlice, reducer as chainReducer } from './features/chain/stateSlice';
+import { name as balanceSlice, reducer as balanceReducer } from './features/balance/stateSlice';
 
 const reducers = combineReducers({
-    [accauntSlice.name]: accauntSlice.reducer,
-    [chainSlice.name]: chainSlice.reducer,
-    [balanceSlice.name]: balanceSlice.reducer
+    [accountSlice]: accountReducer,
+    [chainSlice]: chainReducer,
+    [balanceSlice]: balanceReducer
 })
 
 export const store = configureStore({

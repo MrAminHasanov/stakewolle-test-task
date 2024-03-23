@@ -7,7 +7,7 @@ const initialState: initialStateType = {
     status: "init",
 };
 
-export const chainSlice = createSlice({
+const chainSlice = createSlice({
     name: "chainSlice",
     initialState,
     reducers: {
@@ -49,4 +49,4 @@ export const chainSlice = createSlice({
             )
 })
 
-export const { actions } = chainSlice
+export const { actions, reducer, name } = chainSlice

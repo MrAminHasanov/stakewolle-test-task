@@ -2,7 +2,7 @@ import { useAppDispatch } from "@/hooks/reduxHooks";
 import { useCallback } from "react";
 
 import { getAccauntThunk } from "./thunks";
-import { actions } from "./stateSlice.slice";
+import { actions } from "./stateSlice";
 
 export const useAccauntActions = () => {
     const dispatch = useAppDispatch()

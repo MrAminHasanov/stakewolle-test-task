@@ -7,7 +7,7 @@ const initialState: initialStateType = {
     status: "init"
 };
 
-export const balanceSlice = createSlice({
+const balanceSlice = createSlice({
     name: "balanceSlice",
     initialState,
     reducers: {
@@ -32,4 +32,4 @@ export const balanceSlice = createSlice({
             )
 })
 
-export const { actions } = balanceSlice
+export const { actions, name, reducer } = balanceSlice

@@ -1,8 +1,8 @@
 import { RootState } from "@/store/store";
-import { accauntSlice } from "./stateSlice.slice";
+import { name as sliceName } from "./stateSlice";
 import { createSelector } from "@reduxjs/toolkit";
 
-const rootSelector = (state: RootState) => state[accauntSlice.name];
+const rootSelector = (state: RootState) => state[sliceName];
 
 export const accauntStatusSelector = createSelector(rootSelector, ({ status }) => status);
 export const accauntStatusMessageSelector = createSelector(rootSelector, ({ statusMessage }) => statusMessage);
