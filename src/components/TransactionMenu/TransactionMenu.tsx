@@ -8,7 +8,7 @@ import { useSendTransaction } from "@/hooks/useSendTransaction";
 
 import { activeChainStatusSelector, useChainActions } from "@/store/features/chain";
 import { accauntIdSelector } from "@/store/features/account";
-import { metaMask } from "@/functions/requests";
+import { getMetaMask } from "@/functions/requests";
 
 import { Box } from "@mui/material";
 import NetworkTabs from "./NetworkTabs/NetworkTabs";
@@ -37,7 +37,7 @@ function TransactionMenu() {
     useEffect(() => {
         if (activeChainStatus === "init") {
             getActualChainId()
-            metaMask.on("chainChanged", () => updateChain())
+            getMetaMask().on("chainChanged", () => updateChain())
         } else if (activeChainStatus === "update") {
             getActualChainId()
         }

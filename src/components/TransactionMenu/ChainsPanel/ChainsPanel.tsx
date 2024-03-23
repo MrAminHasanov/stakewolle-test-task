@@ -7,7 +7,7 @@ import { useAppSelector } from "@/hooks/reduxHooks";
 import { useEffect } from "react";
 import { accauntIdSelector } from "@/store/features/account";
 import { activeChainSelector } from "@/store/features/chain";
-import { metaMask } from "@/functions/requests";
+import { getMetaMask } from "@/functions/requests";
 
 interface componentProps {
     activeNetwork: string,
@@ -27,8 +27,8 @@ function ChainsPanel(
     useEffect(() => {
         if (balanceStatus === "init") {
             getBalance(accId)
-            metaMask.on("chainChanged", () => updateBalance())
-            metaMask.on("accountsChanged", () => updateBalance())
+            getMetaMask().on("chainChanged", () => updateBalance())
+            getMetaMask().on("accountsChanged", () => updateBalance())
         } else if (balanceStatus === "update") {
             getBalance(accId)
         }

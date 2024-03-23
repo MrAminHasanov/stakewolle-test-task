@@ -8,7 +8,7 @@ import { status, statusMessage } from "@/store/features/account/types";
 
 import Loading from "../loading";
 
-import { metaMask } from "@/functions/requests";
+import { getMetaMask } from "@/functions/requests";
 import { useAccauntActions } from "@/store/features/account";
 
 function InitialProvider({ children }: Readonly<{
@@ -19,7 +19,7 @@ function InitialProvider({ children }: Readonly<{
     const { updateAccaunt, getAccaunt } = useAccauntActions();
 
     useEffect(() => {
-        if (!metaMask) {
+        if (!getMetaMask()) {
             throw new Error("exstention not instaled")
         }
     }, [])
@@ -27,7 +27,7 @@ function InitialProvider({ children }: Readonly<{
     useEffect(() => {
         if (status === "init") {
             getAccaunt()
-            metaMask.on("accountsChanged", () => updateAccaunt())
+            getMetaMask().on("accountsChanged", () => updateAccaunt())
         } else if (status === "update") {
             getAccaunt()
         }

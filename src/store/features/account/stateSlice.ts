@@ -6,7 +6,7 @@ import { getAccauntThunk } from "./thunks";
 
 const initialState: initialStateType = {
     status: "init",
-    statusMessage: "",
+    statusMessage: "loading",
     accauntId: ""
 };
 
