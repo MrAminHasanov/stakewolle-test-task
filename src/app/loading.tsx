@@ -1,22 +1,16 @@
 "use client"
 
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/hooks/reduxHooks';
 import { accauntStatusMessageSelector } from '@/store/features/account/selectors';
 import { statusMessage } from '@/store/features/account/types';
 import { Box, CircularProgress, Container, Typography } from '@mui/material';
 
 
 function Loading() {
-    const statusMessage: statusMessage = useSelector(accauntStatusMessageSelector);
+    const statusMessage: statusMessage = useAppSelector(accauntStatusMessageSelector);
 
     return (
-        <Container sx={{
-            bgcolor: '#cfe8fc',
-            height: '100vh',
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-        }} maxWidth={false}>
+        <Container sx={{ bgcolor: '#cfe8fc' }} maxWidth={false}>
             <Box
                 sx={{
                     display: "flex",
@@ -24,8 +18,9 @@ function Loading() {
                     alignItems: "center"
                 }}>
                 <CircularProgress />
-                <Typography mt={1} variant="h6"
-                    sx={{ maxWidth: "220px", textAlign: "center" }}>
+                <Typography
+                    mt={1} variant="h6" maxWidth={"sm"}
+                    sx={{ textAlign: "center" }}>
                     {statusMessage}
                 </Typography>
             </Box>

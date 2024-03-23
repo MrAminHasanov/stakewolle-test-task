@@ -1,20 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from '@reduxjs/toolkit';
 import { initialStateType } from "./types";
 
 import { getAccauntThunk } from "./thunks";
 
 
 const initialState: initialStateType = {
-    status: "startLoading",
+    status: "init",
     statusMessage: "",
-    accauntId: null
+    accauntId: ""
 };
 
 export const accauntSlice = createSlice({
     name: "accauntSlice",
     initialState,
-    reducers: {},
+    reducers: {
+        setStatus(state, { payload }) {
+            state.status = payload
+        }
+    },
     extraReducers: builder => {
         builder
             .addCase(
@@ -26,7 +29,7 @@ export const accauntSlice = createSlice({
             )
             .addCase(
                 getAccauntThunk.fulfilled,
-                (state: initialStateType, { payload }: PayloadAction<string[]>) => {
+                (state: initialStateType, { payload }) => {
                     state.accauntId = payload[0];
                     state.status = "succsess";
                 }
@@ -45,3 +48,5 @@ export const accauntSlice = createSlice({
             )
     }
 })
+
+export const { actions } = accauntSlice; 

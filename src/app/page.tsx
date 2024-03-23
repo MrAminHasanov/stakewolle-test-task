@@ -1,10 +1,10 @@
-import Test from "@/components/Test";
+import TransactionMenu from "@/components/TransactionMenu/TransactionMenu";
 
 export default function Home() {
 
   return (
-    <div>
-      <Test />
-    </div>
+    <>
+      <TransactionMenu />
+    </>
   );
 }

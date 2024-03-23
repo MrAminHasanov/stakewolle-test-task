@@ -1,50 +1,58 @@
 'use client'
 
-import { memo, useEffect } from "react"
+import { useEffect } from "react"
+import { useAppSelector } from "@/hooks/reduxHooks";
 
 import { accauntStatusMessageSelector, accauntStatusSelector } from "@/store/features/account/selectors";
 import { status, statusMessage } from "@/store/features/account/types";
 
-import { useAuthAccaunt } from "@/hooks/useAuthAccaunt";
-import { useSelector } from "react-redux";
 import Loading from "../loading";
+
+import { metaMask } from "@/functions/requests";
+import { useAccauntActions } from "@/store/features/account";
 
 function InitialProvider({ children }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const status: status = useSelector(accauntStatusSelector);
-    const statusMessage: statusMessage = useSelector(accauntStatusMessageSelector);
+    const status: status = useAppSelector(accauntStatusSelector);
+    const statusMessage: statusMessage = useAppSelector(accauntStatusMessageSelector);
+    const { updateAccaunt, getAccaunt } = useAccauntActions();
 
     useEffect(() => {
-        const thisWindow: any = window;
-        if (!thisWindow.ethereum) {
+        if (!metaMask) {
             throw new Error("exstention not instaled")
         }
     }, [])
 
-    useAuthAccaunt(status);
+    useEffect(() => {
+        if (status === "init") {
+            getAccaunt()
+            metaMask.on("accountsChanged", () => updateAccaunt())
+        } else if (status === "update") {
+            getAccaunt()
+        }
+    }, [status])
 
-    const Content = memo(
-        ({ status, children }: { status: status, children: React.ReactNode; }) => {
-            switch (status) {
-                case "loading":
-                case "startLoading": {
-                    return <Loading />
-                }
-                case "error": {
-                    throw new Error(statusMessage)
-                }
-                case "succsess": {
-                    return children
-                }
+    const Content = () => {
+        switch (status) {
+            case "loading":
+            case "init": {
+                return <Loading />
+            }
+            case "error": {
+                throw new Error(statusMessage)
+            }
+            case "succsess": {
+                return children
             }
         }
-    )
+    }
+
 
     return (
         <>
             {
-                <Content status={status} children={children} />
+                <Content />
             }
         </>
     )

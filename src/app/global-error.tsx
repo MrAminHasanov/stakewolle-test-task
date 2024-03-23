@@ -22,28 +22,23 @@ function ErrorBoundary({
     return (
         <html>
             <body>
-                <Container sx={{
-                    bgcolor: 'secondary.main',
-                    height: '100vh',
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                }} maxWidth={false}>
+                <Container sx={{ bgcolor: 'secondary.main' }} maxWidth={false}>
                     <Box
                         sx={{
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "center"
                         }}>
-                        <ErrorOutlineIcon sx={{fontSize:"120px",color:"secondary.dark"}}/>
-                        <Typography mt={1} variant="h6"
-                            sx={{ maxWidth: "220px", textAlign: "center", color: "primary.contrastText" }}>
+                        <ErrorOutlineIcon sx={{ fontSize: "120px", color: "secondary.dark" }} />
+                        <Typography
+                            mt={1} variant="h6" maxWidth={"sm"}
+                            sx={{ textAlign: "center", color: "primary.contrastText" }}>
                             {errorMessage}
                         </Typography>
                     </Box>
                 </Container >
             </body>
-        </html>
+        </html >
     )
 }
 
