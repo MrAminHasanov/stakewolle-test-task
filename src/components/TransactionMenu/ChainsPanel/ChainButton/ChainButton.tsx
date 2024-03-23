@@ -16,7 +16,7 @@ interface componentProps {
 const subIcon = (chainId: string) => {
     const thisChain = Object.values(chainBlocks).find((chain) => chain.chainId === chainId);
     return (
-        < span style={{ fontSize: "14px", padding: "0px 8px" }}> {thisChain?.chainName}</span >);
+        < span style={{ fontSize: "14px", padding: "0px 8px" }}> {thisChain?.chainName.slice(6)}</span >);
 }
 
 const ChainButton = memo((

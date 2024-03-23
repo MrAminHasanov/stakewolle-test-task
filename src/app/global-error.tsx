@@ -22,7 +22,13 @@ function ErrorBoundary({
     return (
         <html>
             <body>
-                <Container sx={{ bgcolor: 'secondary.main' }} maxWidth={false}>
+                <Container sx={{
+                    bgcolor: 'secondary.main',
+                    height: '100vh',
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                }} maxWidth={false}>
                     <Box
                         sx={{
                             display: "flex",
