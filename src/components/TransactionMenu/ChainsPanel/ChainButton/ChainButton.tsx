@@ -16,7 +16,7 @@ interface componentProps {
 const subIcon = (chainId: string) => {
     const thisChain = Object.values(chainBlocks).find((chain) => chain.chainId === chainId);
     return (
-        < span style={{ fontSize: "14px", padding: "0px 8px" }}> {thisChain?.chainName.slice(6)}</span >);
+        <span style={{ fontSize: "14px", padding: "0px 8px" }}> {thisChain?.chainName.slice(6)}</span >);
 }
 
 const ChainButton = memo((
@@ -56,11 +56,13 @@ const ChainButton = memo((
                 my: 0.6,
                 display: "flex",
                 aligItems: "center",
+                minWidth:"50px"
             }}>
             {
                 balanceStatus === "success"
                     ? sortedBalance
-                    : <CircularProgress size={"16px"} />}
+                    : <CircularProgress size={"16px"} />
+            }
         </Button >
     )
 })
